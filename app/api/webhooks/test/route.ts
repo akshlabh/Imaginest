@@ -1,45 +1,50 @@
 import { NextResponse } from "next/server";
-import { MongoClient, ServerApiVersion } from "mongodb";
-
-// MongoDB connection URI - Replace the placeholder with actual credentials
-const uri = "mongodb+srv://admin:admin@cluster0.xcbszqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-// Create a MongoClient instance with the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+import { createUser } from "@/lib/actions/user.action"; // adjust path if needed
 
 export async function POST(req: Request) {
   try {
-    // Connect the client to the server
-    await client.connect();
-    
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    console.log("📦 Receiving POST request to create user...");
 
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // Simulate incoming user data (replace with real values or pull from req.body if dynamic)
+    const userData = {
+      clerkId: "test_clerk_001",
+      email: "testuser@example.com",
+      username: "testuser",
+      photo: "https://example.com/testuser.jpg",
+      firstName: "Test",
+      lastName: "User",
+    };
 
-    // Optionally, you can retrieve data or perform operations here.
-    // For example, inserting a dummy record:
-    const db = client.db("Imaginest"); // Replace with your database name
-    const collection = db.collection("test"); // Replace with your collection name
-    const result = await collection.insertOne({ message: "Connection successful!" });
+    console.log("📤 Attempting to create user:", userData);
 
-    console.log("Document inserted:", result);
+    const newUser = await createUser(userData);
 
-    // Return a successful response to the client
-    return NextResponse.json({ message: "Successfully connected to MongoDB!" });
-  } catch (error) {
-    console.error("Error connecting to MongoDB:ghghgh", error);
+    console.log("✅ User successfully created:", newUser);
 
-    // Return an error response
-    return NextResponse.json({ error: "Error connecting to MongoDB", details: error }, { status: 500 });
-  } finally {
-    // Ensure the client is closed after the operation
-    await client.close();
+    return NextResponse.json({
+      message: "User created and saved to MongoDB successfully!",
+      user: newUser,
+    });
+  } catch (error: any) {
+    console.error("❌ Error during user creation:", {
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      codeName: error.codeName,
+    });
+
+    return NextResponse.json(
+      {
+        error: "User creation failed",
+        details: {
+          name: error.name,
+          message: error.message,
+          code: error.code,
+          codeName: error.codeName,
+        },
+      },
+      { status: 500 }
+    );
   }
 }
