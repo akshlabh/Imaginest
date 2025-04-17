@@ -2,14 +2,16 @@ import Header from '@/components/shared/header'
 import TransformationForm from '@/components/shared/TransformationForm'
 import { transformationTypes } from '@/constants'
 
-interface SearchParamProps {
+type TransformationTypeKey = keyof typeof transformationTypes;
+
+interface PageProps {
   params: {
-    type: keyof typeof transformationTypes
-  }
+    type: TransformationTypeKey;
+  };
 }
 
-const AddTransformationTypePage = ({ params }: SearchParamProps) => {
-  const transformation = transformationTypes[params.type]
+const AddTransformationTypePage = ({ params }: PageProps) => {
+  const transformation = transformationTypes[params.type];
 
   return (
     <>
@@ -19,7 +21,7 @@ const AddTransformationTypePage = ({ params }: SearchParamProps) => {
       />
       <TransformationForm />
     </>
-  )
-}
+  );
+};
 
-export default AddTransformationTypePage
+export default AddTransformationTypePage;
