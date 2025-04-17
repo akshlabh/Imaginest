@@ -1,23 +1,22 @@
-// import { ClerkProvider } from '@clerk/nextjs'
-import React from 'react'
-import Sidebar from '../../components/shared/Sidebar'
 import MobileNav from '@/components/shared/MobileNav'
+import Sidebar from '@/components/shared/Sidebar'
+import { Toaster } from '@/components/ui/sonner'
 
-const Layout = ({children}:{children:React.ReactNode}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    // <ClerkProvider>
-        
-    <main className='root '>
-        <Sidebar></Sidebar>
-        <MobileNav></MobileNav>
-        <div className='root-container'>
-            <div className='wrapper'>
+    <main className="apply flex min-h-screen w-full flex-col bg-white lg:flex-row">
+      <Sidebar />
+      <MobileNav />
 
-            {children}
-            </div>
+      <div className="mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10">
+        <div className="max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 p-16-regular">
+          {children}
         </div>
+        <h1>Hello</h1>
+      </div>
+      
+      <Toaster />
     </main>
-    // </ClerkProvider>
   )
 }
 
