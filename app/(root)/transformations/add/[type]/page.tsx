@@ -1,11 +1,12 @@
 import Header from '@/components/shared/header'
-import TransformationForm from '@/components/shared/TransformationForm';
+// import TransformationForm from '@/components/shared/TransformationForm';
 import { transformationTypes } from '@/constants'
 
-const AddTransformationTypePage = async (props: SearchParamProps) => {
-  const { type } = await props.params;
+
+const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps) => {
 
   const transformation = transformationTypes[type];
+
 
   return (
     <>
@@ -13,7 +14,7 @@ const AddTransformationTypePage = async (props: SearchParamProps) => {
         title={transformation.title}
         subtitle={transformation.subTitle}
       />
-      <TransformationForm />
+    
     </>
   )
 }
