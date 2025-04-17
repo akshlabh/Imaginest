@@ -1,17 +1,13 @@
+"use client"
 import Header from '@/components/shared/header'
-import TransformationForm from '@/components/shared/TransformationForm'
+import TransformationForm from '@/components/shared/TransformationForm';
 import { transformationTypes } from '@/constants'
 
-type TransformationTypeKey = keyof typeof transformationTypes;
 
-interface PageProps {
-  params: {
-    type: TransformationTypeKey;
-  };
-}
+const AddTransformationTypePage = async ({ params}:SearchParamProps) => {
+  const {type} = await params;
+  const transformation = transformationTypes[type];
 
-const AddTransformationTypePage = ({ params }: PageProps) => {
-  const transformation = transformationTypes[params.type];
 
   return (
     <>
@@ -19,9 +15,9 @@ const AddTransformationTypePage = ({ params }: PageProps) => {
         title={transformation.title}
         subtitle={transformation.subTitle}
       />
-      <TransformationForm />
+    
     </>
-  );
-};
+  )
+}
 
-export default AddTransformationTypePage;
+export default AddTransformationTypePage
