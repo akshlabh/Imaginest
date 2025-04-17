@@ -1,13 +1,12 @@
-"use client"
 import Header from '@/components/shared/header'
 import TransformationForm from '@/components/shared/TransformationForm';
 import { transformationTypes } from '@/constants'
 
 
-const AddTransformationTypePage = async ({ params}:SearchParamProps) => {
-  const {type} = await params;
-  const transformation = transformationTypes[type];
-
+const AddTransformationTypePage = async ({ params}: SearchParamProps) => {
+  const xxx= await params;
+  const transformation = transformationTypes[xxx.type];
+ 
 
   return (
     <>
@@ -16,8 +15,10 @@ const AddTransformationTypePage = async ({ params}:SearchParamProps) => {
         subtitle={transformation.subTitle}
       />
     
+ 
     </>
   )
 }
 
 export default AddTransformationTypePage
+
