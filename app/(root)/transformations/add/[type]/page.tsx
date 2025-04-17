@@ -3,9 +3,9 @@ import TransformationForm from '@/components/shared/TransformationForm';
 import { transformationTypes } from '@/constants'
 
 
-const AddTransformationTypePage = async ({ params}: SearchParamProps) => {
-  const xxx= await params;
-  const transformation = transformationTypes[xxx.type];
+const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps) => {
+  // const xxx= await type;
+  const transformation = transformationTypes[type];
  
 
   return (
