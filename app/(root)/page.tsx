@@ -1,19 +1,19 @@
-// "use client"
-import { Collection } from "@/components/shared/Collection"
-import { navLinks } from "@/constants"
-import Image from "next/image"
-import Link from "next/link"
-import { getAllImages } from "@/lib/actions/image.actions"
-// searchParams: {
-//   [key: string]: string | string[] | undefined;
-// }
-type searchPar= Promise<{[key: string]: string | string[] | undefined;}>
+import { Suspense } from "react";
+import { Collection } from "@/components/shared/Collection";
+import { navLinks } from "@/constants";
+import Image from "next/image";
+import Link from "next/link";
+import { getAllImages } from "@/lib/actions/image.actions";
+
+type searchPar = Promise<{ [key: string]: string | string[] | undefined }>;
+
 const Home = async (props: { params: searchPar }) => {
   const value = await props.params;
 
   const page = Number(value?.page) || 1;
-  const searchQuery = (value?.query as string )||"";
-  const images = await getAllImages({ page, searchQuery})
+  const searchQuery = (value?.query as string) || "";
+  const images = await getAllImages({ page, searchQuery });
+
   return (
     <>
       <section className="flex flex-col items-center justify-center gap-10 rounded-[20px] border bg-[url('/assets/images/banner-bg.png')] bg-cover bg-center bg-no-repeat p-10 shadow-inner sm:p-16">
@@ -35,17 +35,18 @@ const Home = async (props: { params: searchPar }) => {
         </ul>
       </section>
 
-
       <section className="sm:mt-12">
+        <Suspense fallback={<div className="text-center text-white">Loading collection...</div>}>
           <Collection
             hasSearch={true}
             images={images?.data}
             totalPages={images?.totalPage}
             page={page}
-          ></Collection>
+          />
+        </Suspense>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

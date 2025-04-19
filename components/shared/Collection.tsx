@@ -18,6 +18,7 @@ import { formUrlQuery } from "@/lib/utils";
 import { Button } from "../ui/button";
 
 import { Search } from "./Search";
+import { Suspense } from "react";
 
 export const Collection = ({
   hasSearch = false,
@@ -50,7 +51,9 @@ export const Collection = ({
     <>
       <div className="md:flex-between mb-6 flex flex-col gap-5 md:flex-row">
         <h2 className="h2-bold text-dark-600">Recent Edits</h2>
-        {hasSearch && <Search />}
+        {hasSearch && <Suspense fallback={<div className="text-sm text-gray-500">Loading search...</div>}>
+    <Search />
+  </Suspense>}
       </div>
 
       {images.length > 0 ? (
