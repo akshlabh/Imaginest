@@ -1,3 +1,4 @@
+// "use client"
 import { Collection } from "@/components/shared/Collection"
 import { navLinks } from "@/constants"
 import Image from "next/image"
