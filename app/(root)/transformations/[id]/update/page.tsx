@@ -6,12 +6,16 @@ import TransformationForm from "@/components/shared/TransformationForm";
 import { transformationTypes } from "@/constants";
 import { getUserById } from "@/lib/actions/user.action";
 import { getImageById } from "@/lib/actions/image.actions";
+type Params = Promise<{ id:string,type: TransformationTypeKey }>
 
-const Page = async ({ params: { id } }: SearchParamProps) => {
+
+const Page = async (props: { params: Params }) => {
   const { userId } = await auth();
 
   if (!userId) redirect("/sign-in");
-
+  // const id = 
+  const params = await props.params;
+  const id = params.id;
   const user = await getUserById(userId);
   const image = await getImageById(id);
 
