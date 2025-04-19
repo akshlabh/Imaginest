@@ -16,27 +16,32 @@ const Home = async (props: { params: searchPar }) => {
 
   return (
     <>
-      <section className="flex flex-col items-center justify-center gap-10 rounded-[20px] border bg-[url('/assets/images/banner-bg.png')] bg-cover bg-center bg-no-repeat p-10 shadow-inner sm:p-16">
-        <h1 className="text-[32px] sm:text-[44px] font-semibold leading-tight text-center text-white shadow-md max-w-xl">
-          Unleash Your Creative Vision with Imaginest
+      <section className="flex flex-col items-center justify-center gap-10 rounded-3xl border border-purple-200 bg-[url('/assets/images/banner-bg.png')] bg-cover bg-center bg-no-repeat px-6 py-16 shadow-lg sm:px-20 sm:py-24 transition-all duration-300">
+        <h1 className="max-w-3xl text-center text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl">
+        Elevate Your Creative Journey with Imaginest
         </h1>
 
-        <ul className="flex flex-wrap items-center justify-center gap-10">
+        <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           {navLinks.slice(1, 5).map((link) => (
             <li key={link.route}>
-              <Link href={link.route} className="flex flex-col items-center gap-2">
-                <div className="flex items-center justify-center rounded-full bg-white p-4">
+              <Link
+                href={link.route}
+                className="flex flex-col items-center gap-2 hover:scale-105 transition-transform duration-200"
+              >
+                <div className="flex items-center justify-center rounded-full bg-white p-4 shadow-md hover:shadow-purple-300 transition-shadow">
                   <Image src={link.icon} alt="nav icon" width={24} height={24} />
                 </div>
-                <p className="text-white text-sm sm:text-base text-center">{link.label}</p>
+                <p className="text-center text-sm font-medium text-white sm:text-base">
+                  {link.label}
+                </p>
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="sm:mt-12">
-        <Suspense fallback={<div className="text-center text-white">Loading collection...</div>}>
+      <section className="mt-10 sm:mt-16 px-4 sm:px-8">
+        <Suspense fallback={<div className="text-center text-purple-600">Loading collection...</div>}>
           <Collection
             hasSearch={true}
             images={images?.data}

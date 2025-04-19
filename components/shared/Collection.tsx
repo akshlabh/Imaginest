@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CldImage } from "next-cloudinary";
-
 import {
   Pagination,
   PaginationContent,
@@ -14,7 +13,6 @@ import {
 import { transformationTypes } from "@/constants";
 import { IImage } from "@/lib/database/models/image.model";
 import { formUrlQuery } from "@/lib/utils";
-
 import { Button } from "../ui/button";
 import { Search } from "./Search";
 import { Suspense } from "react";
@@ -33,10 +31,8 @@ export const Collection = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // PAGINATION HANDLER
   const onPageChange = (action: string) => {
     const pageValue = action === "next" ? Number(page) + 1 : Number(page) - 1;
-
     const newUrl = formUrlQuery({
       searchParams: searchParams.toString(),
       key: "page",
@@ -48,8 +44,8 @@ export const Collection = ({
 
   return (
     <>
-      <div className="md:flex-between mb-6 flex flex-col gap-5 md:flex-row">
-        <h2 className="text-[30px] font-bold md:text-[36px] leading-[110%] text-dark-600">
+      <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-purple-900">
           Recent Edits
         </h2>
         {hasSearch && (
@@ -60,38 +56,40 @@ export const Collection = ({
       </div>
 
       {images.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
           {images.map((image) => (
             <Card image={image} key={String(image._id)} />
           ))}
         </ul>
       ) : (
-        <div className="flex-center h-60 w-full rounded-[10px] border border-dark-400/10 bg-white/20">
-          <p className="font-semibold text-[20px] leading-[140%]">Empty List</p>
+        <div className="flex-center h-60 w-full rounded-xl border border-gray-300 bg-white/40 text-center">
+          <p className="text-lg font-semibold text-gray-600">No images found.</p>
         </div>
       )}
 
       {totalPages > 1 && (
-        <Pagination className="mt-10">
-          <PaginationContent className="flex w-full">
+        <Pagination className="mt-12">
+          <PaginationContent className="flex w-full items-center justify-between gap-4">
             <Button
               disabled={Number(page) <= 1}
-              className="flex-center w-32 gap-3 rounded-full bg-purple-500 py-4 px-6 text-white"
+              className="rounded-full bg-purple-500 px-6 py-3 text-white transition hover:bg-purple-600 disabled:opacity-50"
               onClick={() => onPageChange("prev")}
             >
-              <PaginationPrevious className="hover:bg-transparent hover:text-white" />
+              <PaginationPrevious className="hover:text-white" />
+              <span className="ml-2 text-sm">Previous</span>
             </Button>
 
-            <p className="flex-center font-medium text-[16px] leading-[140%] w-fit flex-1">
-              {page} / {totalPages}
+            <p className="text-base font-medium text-gray-700">
+              Page {page} of {totalPages}
             </p>
 
             <Button
-              className="flex-center w-32 gap-3 rounded-full bg-purple-600 py-4 px-6 text-white"
+              className="rounded-full bg-purple-600 px-6 py-3 text-white transition hover:bg-purple-700 disabled:opacity-50"
               onClick={() => onPageChange("next")}
               disabled={Number(page) >= totalPages}
             >
-              <PaginationNext className="hover:bg-transparent hover:text-white" />
+              <span className="mr-2 text-sm">Next</span>
+              <PaginationNext className="hover:text-white" />
             </Button>
           </PaginationContent>
         </Pagination>
@@ -105,7 +103,7 @@ const Card = ({ image }: { image: IImage }) => {
     <li>
       <Link
         href={`/transformations/${image._id}`}
-        className="flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 bg-white p-4 shadow-xl shadow-purple-200/10 transition-all hover:shadow-purple-200/20"
+        className="group flex flex-col gap-4 rounded-2xl border border-purple-200 bg-white p-4 shadow-lg transition-all hover:shadow-xl hover:border-purple-300"
       >
         <CldImage
           src={image.publicId}
@@ -114,11 +112,12 @@ const Card = ({ image }: { image: IImage }) => {
           height={image.height}
           {...image.config}
           loading="lazy"
-          className="h-52 w-full rounded-[10px] object-cover"
+          className="h-52 w-full rounded-lg object-cover"
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
         />
-        <div className="flex-between">
-          <p className="font-semibold text-[20px] leading-[140%] mr-3 line-clamp-1 text-dark-600">
+
+        <div className="flex items-center justify-between">
+          <p className="line-clamp-1 text-lg font-semibold text-gray-800">
             {image.title}
           </p>
           <Image

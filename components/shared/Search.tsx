@@ -45,7 +45,7 @@ export const Search = () => {
       />
 
       <Input
-        className="search-field"
+        className="border-0 bg-transparent text-dark-600 w-full placeholder:text-dark-400 h-[50px] p-16-medium focus-visible:ring-offset-0 p-3 focus-visible:ring-transparent !important"
         placeholder="Search"
         onChange={(e) => setQuery(e.target.value)}
       />
