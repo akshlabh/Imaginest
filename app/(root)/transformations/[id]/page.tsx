@@ -7,8 +7,10 @@ import TransformedImage from "@/components/shared/TransformedImage";
 import { Button } from "@/components/ui/button";
 import { getImageById } from "@/lib/actions/image.actions";
 import { getImageSize } from "@/lib/utils";
+import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
 // import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
 type Params = Promise<{ id:string,type: TransformationTypeKey }>
+
 const ImageDetails = async (props: { params: Params }) => {
 
   const { userId } = await auth();
@@ -60,7 +62,7 @@ const ImageDetails = async (props: { params: Params }) => {
       </section>
 
       <section className="mt-10 border-t border-dark-400/15">
-        <div className="transformation-grid">
+        <div className="grid h-fit min-h-[200px] grid-cols-1 gap-5 py-8 md:grid-cols-2">
           {/* MEDIA UPLOADER */}
           <div className="flex flex-col gap-4">
             <h3 className="h3-bold text-dark-600">Original</h3>
@@ -70,7 +72,7 @@ const ImageDetails = async (props: { params: Params }) => {
               height={getImageSize(image.transformationType, image, "height")}
               src={image.secureURL}
               alt="image"
-              className="transformation-original_image"
+              className="h-fit min-h-72 w-full rounded-[10px] border border-dashed bg-purple-100/20 object-cover p-2"
             />
           </div>
 
@@ -87,13 +89,13 @@ const ImageDetails = async (props: { params: Params }) => {
 
         {userId === image.author.clerkId && (
           <div className="mt-4 space-y-4">
-            <Button asChild type="button" className="submit-button capitalize">
+            <Button asChild type="button" className="bg-purple-500 bg-cover rounded-full py-4 px-6 p-16-semibold h-[50px] w-full md:h-[54px] capitalize">
               <Link href={`/transformations/${image._id}/update`}>
                 Update Image
               </Link>
             </Button>
-{/* 
-            <DeleteConfirmation imageId={image._id} /> */}
+
+            <DeleteConfirmation imageId={image._id} />
           </div>
         )}
       </section>

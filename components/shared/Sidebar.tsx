@@ -25,7 +25,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all hover:bg-purple-100 hover:shadow-inner group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    isActive ? 'bg-[url(/assets/images/gradient-bg.svg)] text-white' : 'text-gray-700'
                   }`}>
                     <Link className="p-16-semibold flex size-full gap-4 p-4" href={link.route}>
                       <Image 
@@ -49,7 +49,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all hover:bg-purple-100 hover:shadow-inner group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    isActive ? 'bg-[url(/assets/images/gradient-bg.svg)] text-white' : 'text-gray-700'
                   }`}>
                     <Link className="p-16-semibold flex size-full gap-4 p-4" href={link.route}>
                       <Image 
