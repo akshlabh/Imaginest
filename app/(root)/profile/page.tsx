@@ -6,10 +6,13 @@ import { Collection } from "@/components/shared/Collection";
 import Header from "@/components/shared/header";
 import { getUserImages } from "@/lib/actions/image.actions";
 import { getUserById } from "@/lib/actions/user.action";
+type searchPar= Promise<{[key: string]: string | string[] | undefined;}>
 
-const Profile = async ({ searchParams }: SearchParamProps) => {
-  const ans = await searchParams;
-  const page = Number(ans?.page) || 1;
+
+const Profile = async (props: { params: searchPar }) => {
+  // const ans = await searchParams;
+  const value = await props.params;
+  const page = Number(value?.page) || 1;
   const { userId } = await auth();
 
   if (!userId) redirect("/sign-in");
