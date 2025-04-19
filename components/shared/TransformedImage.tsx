@@ -19,12 +19,12 @@ const TransformedImage = ({image,type,title,transformationConfig,isTransforming,
   return (
     <div className='flex flex-col gap-4'>
         <div className='flex-between'>
-            <h3 className='h3-bold text-dark-600'>
+            <h3 className='font-bold text-[30px] leading-[140%] text-dark-600'>
                 Transformed
             </h3>
 
             {hasDownload && (
-                <button className='p-14-medium mt-2 flex items-center gap-2 px-2'
+                <button className='font-medium text-[14px] leading-[120%] mt-2 flex items-center gap-2 px-2'
                 onClick={downloadHandler}
                 >
                     <Image src="/assets/icons/download.svg" 
@@ -66,9 +66,12 @@ const TransformedImage = ({image,type,title,transformationConfig,isTransforming,
                     </div>)}    
                 </div>
             ):( 
-                <div className='flex-center p-14-medium h-full min-h-72 flex-col gap-5 rounded-[16px] border border-dashed bg-purple-100/20 shadow-inner'>
-                    Transformed image
-                </div>) } 
+                <div className="flex flex-col items-center justify-center h-full min-h-72 gap-4 rounded-2xl border border-dashed border-purple-300/30 bg-purple-100/10 text-sm font-medium text-dark-500 shadow-inner transition hover:border-purple-400/60 hover:bg-purple-100/20">
+  <p className="text-center text-base font-semibold text-purple-800">
+    Transformed image
+  </p>
+</div>
+) } 
     </div>
   )
 }

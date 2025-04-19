@@ -23,7 +23,7 @@ const ImageDetails = async (props: { params: Params }) => {
       <Header title={image.title} />
 
       <section className="mt-5 flex flex-wrap gap-4">
-        <div className="p-14-medium md:p-16-medium flex gap-2">
+        <div className="font-medium text-[14px] leading-[120%] md:text-[16px] md:leading-[140%] flex gap-2">
           <p className="text-dark-600">Transformation:</p>
           <p className=" capitalize text-purple-400">
             {image.transformationType}
@@ -33,7 +33,7 @@ const ImageDetails = async (props: { params: Params }) => {
         {image.prompt && (
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
-            <div className="p-14-medium md:p-16-medium flex gap-2 ">
+            <div className="font-medium text-[14px] leading-[120%] md:text-[16px] md:leading-[140%] flex gap-2 ">
               <p className="text-dark-600">Prompt:</p>
               <p className=" capitalize text-purple-400">{image.prompt}</p>
             </div>
@@ -43,7 +43,7 @@ const ImageDetails = async (props: { params: Params }) => {
         {image.color && (
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
-            <div className="p-14-medium md:p-16-medium flex gap-2">
+            <div className="font-medium text-[14px] leading-[120%] md:text-[16px] md:leading-[140%] flex gap-2">
               <p className="text-dark-600">Color:</p>
               <p className=" capitalize text-purple-400">{image.color}</p>
             </div>
@@ -53,7 +53,7 @@ const ImageDetails = async (props: { params: Params }) => {
         {image.aspectRatio && (
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
-            <div className="p-14-medium md:p-16-medium flex gap-2">
+            <div className="font-medium text-[14px] leading-[120%] md:text-[16px] md:leading-[140%] flex gap-2">
               <p className="text-dark-600">Aspect Ratio:</p>
               <p className=" capitalize text-purple-400">{image.aspectRatio}</p>
             </div>
@@ -65,7 +65,7 @@ const ImageDetails = async (props: { params: Params }) => {
         <div className="grid h-fit min-h-[200px] grid-cols-1 gap-5 py-8 md:grid-cols-2">
           {/* MEDIA UPLOADER */}
           <div className="flex flex-col gap-4">
-            <h3 className="h3-bold text-dark-600">Original</h3>
+            <h3 className="font-bold text-[30px] leading-[140%] text-dark-600">Original</h3>
 
             <Image
               width={getImageSize(image.transformationType, image, "width")}

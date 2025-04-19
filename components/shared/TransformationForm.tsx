@@ -201,7 +201,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
           name="title"
           formLabel="Image Title"
           className="w-full"
-          render={({ field }) => <Input {...field} className="input-field" />}
+          render={({ field }) => <Input {...field} className="rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important" />}
         />
 
         {type === 'fill' && (
@@ -242,7 +242,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
               render={({ field }) => (
                 <Input 
                   value={field.value}
-                  className="input-field"
+                  className="rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important"
                   onChange={(e) => onInputChangeHandler(
                     'prompt',
                     e.target.value,
@@ -262,7 +262,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                 render={({ field }) => (
                   <Input 
                     value={field.value}
-                    className="rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important"
+                    className="rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 font-semibold text-[16px] leading-[140%] h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important"
                     onChange={(e) => onInputChangeHandler(
                       'color',
                       e.target.value,
@@ -305,7 +305,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         <div className="flex flex-col gap-4">
           <Button 
             type="button"
-            className="bg-blue-600 bg-cover rounded-full py-4 px-6 p-16-semibold h-[50px] w-full md:h-[54px] capitalize"
+            className="bg-blue-600 bg-cover rounded-full py-4 px-6 font-semibold text-[16px] leading-[140%] h-[50px] w-full md:h-[54px] capitalize"
             disabled={isTransforming || newTransformation === null}
             onClick={onTransformHandler}
           >
@@ -313,7 +313,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
           </Button>
           <Button 
             type="submit"
-            className="bg-blue-600 bg-cover rounded-full py-4 px-6 p-16-semibold h-[50px] w-full md:h-[54px] capitalize"
+            className="bg-blue-600 bg-cover rounded-full py-4 px-6 font-semibold text-[16px] leading-[140%] h-[50px] w-full md:h-[54px] capitalize"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Save Image'}

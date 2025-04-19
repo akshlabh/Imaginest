@@ -48,20 +48,20 @@ export const InsufficientCreditsModal = () => {
             Oops.... Looks like you&#39;ve run out of free credits!
           </AlertDialogTitle>
 
-          <AlertDialogDescription className="p-16-regular py-3">
+          <AlertDialogDescription className="font-normal text-[16px] leading-[140%] py-3">
             No worries, though - you can keep enjoying our services by grabbing
             more credits.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel
-            className="button w-full bg-purple-100 text-dark-400"
+            className="py-4 px-6 flex-center gap-3 rounded-full p-16-semibold focus-visible:ring-offset-0 focus-visible:ring-transparent !important w-full bg-purple-100 text-dark-400"
             onClick={() => router.push("/profile")}
           >
             No, Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            className="button w-full bg-purple-gradient  bg-cover"
+            className="py-4 px-6 flex-center gap-3 rounded-full p-16-semibold focus-visible:ring-offset-0 focus-visible:ring-transparent !important w-full bg-purple-gradient  bg-cover"
             onClick={() => router.push("/credits")}
           >
             Yes, Proceed

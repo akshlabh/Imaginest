@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <MobileNav />
 
       <div className="mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10">
-        <div className="max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 p-16-regular ">
+        <div className="max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 font-normal text-[16px] leading-[140%] ">
           {children}
         </div>
       </div>

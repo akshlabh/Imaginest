@@ -16,7 +16,6 @@ import { IImage } from "@/lib/database/models/image.model";
 import { formUrlQuery } from "@/lib/utils";
 
 import { Button } from "../ui/button";
-
 import { Search } from "./Search";
 import { Suspense } from "react";
 
@@ -50,10 +49,14 @@ export const Collection = ({
   return (
     <>
       <div className="md:flex-between mb-6 flex flex-col gap-5 md:flex-row">
-        <h2 className="h2-bold text-dark-600">Recent Edits</h2>
-        {hasSearch && <Suspense fallback={<div className="text-sm text-gray-500">Loading search...</div>}>
-    <Search />
-  </Suspense>}
+        <h2 className="text-[30px] font-bold md:text-[36px] leading-[110%] text-dark-600">
+          Recent Edits
+        </h2>
+        {hasSearch && (
+          <Suspense fallback={<div className="text-sm text-gray-500">Loading search...</div>}>
+            <Search />
+          </Suspense>
+        )}
       </div>
 
       {images.length > 0 ? (
@@ -64,7 +67,7 @@ export const Collection = ({
         </ul>
       ) : (
         <div className="flex-center h-60 w-full rounded-[10px] border border-dark-400/10 bg-white/20">
-          <p className="p-20-semibold">Empty List</p>
+          <p className="font-semibold text-[20px] leading-[140%]">Empty List</p>
         </div>
       )}
 
@@ -73,18 +76,18 @@ export const Collection = ({
           <PaginationContent className="flex w-full">
             <Button
               disabled={Number(page) <= 1}
-              className="button w-32 bg-purple-gradient bg-cover text-white"
+              className="flex-center w-32 gap-3 rounded-full bg-purple-500 py-4 px-6 text-white"
               onClick={() => onPageChange("prev")}
             >
               <PaginationPrevious className="hover:bg-transparent hover:text-white" />
             </Button>
 
-            <p className="flex-center p-16-medium w-fit flex-1">
+            <p className="flex-center font-medium text-[16px] leading-[140%] w-fit flex-1">
               {page} / {totalPages}
             </p>
 
             <Button
-              className="button w-32 bg-purple-600 bg-cover text-white"
+              className="flex-center w-32 gap-3 rounded-full bg-purple-600 py-4 px-6 text-white"
               onClick={() => onPageChange("next")}
               disabled={Number(page) >= totalPages}
             >
@@ -100,7 +103,10 @@ export const Collection = ({
 const Card = ({ image }: { image: IImage }) => {
   return (
     <li>
-      <Link href={`/transformations/${image._id}`} className="flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 bg-white p-4 shadow-xl shadow-purple-200/10 transition-all hover:shadow-purple-200/20">
+      <Link
+        href={`/transformations/${image._id}`}
+        className="flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 bg-white p-4 shadow-xl shadow-purple-200/10 transition-all hover:shadow-purple-200/20"
+      >
         <CldImage
           src={image.publicId}
           alt={image.title}

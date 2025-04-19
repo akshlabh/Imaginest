@@ -25,7 +25,7 @@ export const DeleteConfirmation = ({ imageId }: { imageId: string }) => {
       <AlertDialogTrigger asChild className="w-full rounded-full">
         <Button
           type="button"
-          className="button h-[44px] w-full md:h-[54px]"
+          className="py-4 px-6 flex-center gap-3 rounded-full p-16-semibold focus-visible:ring-offset-0 focus-visible:ring-transparent !important h-[44px] w-full md:h-[54px]"
           variant="destructive"
         >
           Delete Image
@@ -37,7 +37,7 @@ export const DeleteConfirmation = ({ imageId }: { imageId: string }) => {
           <AlertDialogTitle>
             Are you sure you want to delete this image?
           </AlertDialogTitle>
-          <AlertDialogDescription className="p-16-regular">
+          <AlertDialogDescription className="font-normal text-[16px] leading-[140%]">
             This will permanently delete this image
           </AlertDialogDescription>
         </AlertDialogHeader>

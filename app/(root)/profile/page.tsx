@@ -26,7 +26,7 @@ const Profile = async (props: { params: searchPar }) => {
 
       <section className="mt-5 flex flex-col gap-5 sm:flex-row md:mt-8 md:gap-10">
         <div className="w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8">
-          <p className="p-14-medium md:p-16-medium">CREDITS AVAILABLE</p>
+          <p className="font-medium text-[14px] leading-[120%] md:(font-medium text-[16px] leading-[140%]) ">CREDITS AVAILABLE</p>
           <div className="mt-4 flex items-center gap-4">
             <Image
               src="/assets/icons/coins.svg"
@@ -35,12 +35,12 @@ const Profile = async (props: { params: searchPar }) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{user.creditBalance}</h2>
+            <h2 className="text-[30px] font-bold md:text-[36px] leading-[110%] text-dark-600">{user.creditBalance}</h2>
           </div>
         </div>
 
         <div className="w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8">
-          <p className="p-14-medium md:p-16-medium">IMAGE MANIPULATION DONE</p>
+          <p className="font-medium text-[14px] leading-[120%] md:text-[16px] md:leading-[140%]">IMAGE MANIPULATION DONE</p>
           <div className="mt-4 flex items-center gap-4">
             <Image
               src="/assets/icons/photo.svg"
@@ -49,7 +49,7 @@ const Profile = async (props: { params: searchPar }) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{images?.data.length}</h2>
+            <h2 className="text-[30px] font-bold md:text-[36px] leading-[110%] text-dark-600">{images?.data.length}</h2>
           </div>
         </div>
       </section>
