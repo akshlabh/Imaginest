@@ -3,11 +3,15 @@ import { navLinks } from "@/constants"
 import Image from "next/image"
 import Link from "next/link"
 import { getAllImages } from "@/lib/actions/image.actions"
+// searchParams: {
+//   [key: string]: string | string[] | undefined;
+// }
+type searchPar= Promise<{[key: string]: string | string[] | undefined;}>
+const Home = async (props: { params: searchPar }) => {
+  const value = await props.params;
 
-const Home = async ({ searchParams }: SearchParamProps) => {
-  const searchParams1= await searchParams;
-  const page = Number(searchParams1?.page) || 1;
-  const searchQuery = (searchParams1?.query as string )||"";
+  const page = Number(value?.page) || 1;
+  const searchQuery = (value?.query as string )||"";
   const images = await getAllImages({ page, searchQuery})
   return (
     <>
